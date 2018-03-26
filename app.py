@@ -7,7 +7,7 @@ tasks = [
         'id': md5,
         'title': "md5",
         'description': 'hash algorithm', 
-        'done': False
+        'done': True
     },
     {
         'id': factorial,
@@ -35,10 +35,11 @@ tasks = [
     }
 ]
 
-@app.route('/todo/api/v1.0/tasks', methods=['GET'])
+@app.route('/tasks', methods=['GET'])
 def get_tasks():
     return jsonify({'tasks': tasks})
 
+@app.route
 
 
 
