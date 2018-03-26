@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-
+import hashlib
 app = Flask(__name__)
 
 tasks = [
@@ -48,6 +48,11 @@ def getFibonacci(x):
         return 1
     else: 
         return getFibonacci(x-1) + getFibonacci(x-2)
+
+@app.route('/md5/<string:string>', methods=['GET'])
+def getMD5(string):
+    m = (hashlib.md5(str(string).encode()).hexdigest())
+    return m
 
 
 
