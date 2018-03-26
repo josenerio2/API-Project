@@ -11,27 +11,27 @@ tasks = [
     },
     {
         'id': 'factorial',
-        'title': 'gfgf',
-        'description': '', 
-        'done': False
+        'title': 'factorial',
+        'description': 'product of an integer and all the integers below it', 
+        'done': True
     },
     {
         'id': 'fibonacci',
-        'title':'' ,
-        'description': '', 
+        'title':'fibonacci' ,
+        'description': 'numbers', 
         'done': True
     },
     {
         'id': 'is-prime',
-        'title':'' ,
-        'description':'' , 
-        'done': False
+        'title':'is-prime' ,
+        'description':'numbers that cant be formed by mult two smaller numbers' , 
+        'done': True
     },
     {
         'id': 'slack-alert',
-        'title':'' ,
-        'description':'' , 
-        'done': False
+        'title':'slack-alert' ,
+        'description':'notification on slack' , 
+        'done': True
     }
 ]
 
