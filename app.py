@@ -1,3 +1,4 @@
+from slackclient import SlackClient
 from flask import Flask, jsonify
 from math import sqrt
 import hashlib
@@ -60,6 +61,12 @@ def getFactorial(x):
         factorial *= i
     return jsonify({'input':x, 'output':factorial})
 
+@app.route('/slack-alert/<string:message>', methods=['GET'])
+def slackMessage(message):
+    token = '[xoxp-231334506688-308138463303-338593774550-21c8bd9981ab33122515120dd014618b]'
+    sc = SlackClient(token)
+    sc.api_call('chat.postMessage', channel='team0', text=message, username='PythonSlackBot', icon_emoji=':robot_face:')
+    return jsonify({'input':message, 'success':True})
 
 
 if __name__ == "__main__":
