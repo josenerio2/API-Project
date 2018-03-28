@@ -54,8 +54,13 @@ def getMD5(string):
     m = (hashlib.md5(str(string).encode()).hexdigest())
     return m
 
-
-
+@app.route('/factorial/<int:x>', methods=['GET'])
+def getFactorial(x):
+    x = int(x)
+    factorial = 1
+    for i in range(1, x+1):
+        factorial *= i
+    return factorial
 
 
 
