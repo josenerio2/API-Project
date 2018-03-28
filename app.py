@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response
 from math import sqrt
 import hashlib
 app = Flask(__name__)
@@ -60,7 +60,9 @@ def getFactorial(x):
         factorial *= i
     return jsonify({'input':x, 'output':factorial})
 
-
+@app.errorhandler(404) # code from blog.miguelgrinberg.com for 404 error handling
+def not_found(error):
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
