@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from math import sqrt
 import hashlib
 app = Flask(__name__)
 
@@ -42,17 +43,14 @@ def get_tasks():
 @app.route('/fibonacci/<int:x>', methods=['GET'])
 def getFibonacci(x):
     x = int(x)
-    if x == 0: 
-        return 0
-    elif x == 1: 
-        return 1
-    else: 
-        return getFibonacci(x-1) + getFibonacci(x-2)
-
+    fibonacci = ((1+sqrt(5))**x-(1-sqrt(5))**x)/(2**x*sqrt(5))
+    return jsonify({'input':x, 'output':fibonacci})
+    
+    
 @app.route('/md5/<string:string>', methods=['GET'])
 def getMD5(string):
     m = (hashlib.md5(str(string).encode()).hexdigest())
-    return m
+    return jsonify({'input':string, 'output':m})
 
 @app.route('/factorial/<int:x>', methods=['GET'])
 def getFactorial(x):
