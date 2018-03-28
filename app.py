@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response
 from math import sqrt
 import hashlib
 app = Flask(__name__)
@@ -52,7 +52,9 @@ def getMD5(string):
     m = (hashlib.md5(str(string).encode()).hexdigest())
     return jsonify({'input':string, 'output':m})
 
-
+@app.errorhandler(404) #code from miguelgrinberg to handle 404 errors
+def not_found(error):
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
 
 
