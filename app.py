@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 from slackclient import SlackClient
 from flask import Flask, jsonify
+=======
+from flask import Flask, jsonify, make_response
+>>>>>>> 9b370f30f1afe3d4b779a9e09bea1b620583fb0a
 from math import sqrt
 import hashlib
 app = Flask(__name__)
@@ -61,6 +65,7 @@ def getFactorial(x):
         factorial *= i
     return jsonify({'input':x, 'output':factorial})
 
+<<<<<<< HEAD
 @app.route('/slack-alert/<string:message>', methods=['GET'])
 def slackMessage(message):
     token = '[xoxp-231334506688-308138463303-338593774550-21c8bd9981ab33122515120dd014618b]'
@@ -68,6 +73,11 @@ def slackMessage(message):
     sc.api_call('chat.postMessage', channel='team0', text=message, username='PythonSlackBot', icon_emoji=':robot_face:')
     return jsonify({'input':message, 'success':True})
 
+=======
+@app.errorhandler(404) # code from blog.miguelgrinberg.com for 404 error handling
+def not_found(error):
+    return make_response(jsonify({'error': 'Not found'}), 404)
+>>>>>>> 9b370f30f1afe3d4b779a9e09bea1b620583fb0a
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
