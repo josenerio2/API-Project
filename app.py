@@ -59,8 +59,9 @@ def getFactorial(x):
     factorial = 1
     if x<=0:
         return jsonify({'input':x, 'output':error})
-    for i in range(1, x+1):
-        factorial *= i
+    else:
+        for i in range(1, x+1):
+            factorial *= i
     return jsonify({'input':x, 'output':factorial})
 
 @app.route('/slack-alert/<string:message>', methods=['GET'])
